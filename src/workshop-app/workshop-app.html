@@ -6,10 +6,31 @@
     <style>
       :host {
         display: block;
+        text-align: center;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
-    <mauricio-marquez></mauricio-marquez>
+    <h2>Hello [[appName]]!</h2> 
+    <br><hr>
+    <h2>Hardcode</h2>
+    <mauricio-marquez 
+      card-title="Hardcode"
+      input-value="Hardcode"
+      button-tag="Hardcode"
+    ></mauricio-marquez>
+    <br><hr>
+    <h2>One-way data binding</h2>
+    <mauricio-marquez
+      card-title="[[cardTitle]]"
+      input-value="[[inputValue]]"
+      button-tag="[[buttonTag]]"
+    ></mauricio-marquez>
+    <br><hr>
+    <h2>Two-way data binding</h2>
+    <mauricio-marquez
+      card-title="[[inputValue]]"
+      input-value="{{inputValue}}"
+      button-tag="[[inputValue]]"
+    ></mauricio-marquez>
   </template>
 
   <script>
@@ -21,9 +42,21 @@
       static get is() { return 'workshop-app'; }
       static get properties() {
         return {
-          prop1: {
+          appName: {
             type: String,
             value: 'workshop-app'
+          },
+          cardTitle: {
+            type: String,
+            value: 'one-way data binding'
+          },
+          inputValue: {
+            type: String,
+            value: ''
+          },
+          buttonTag: {
+            type: String,
+            value: 'one-way data binding'
           }
         };
       }
