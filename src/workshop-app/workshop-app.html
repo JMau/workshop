@@ -8,11 +8,50 @@
         display: block;
         text-align: center;
       }
+      .hardcode {
+        --mauricio-marquez: {
+          background-color: red;
+        };
+        --mauricio-marquez-paper-card: {
+          --paper-card-background-color: navy;
+        };
+        --mauricio-marquez-paper-button: {
+          background-color: rgb(63, 0, 63);
+          color: white;
+        };
+      }
+      .simple-data-binding {
+        --mauricio-marquez: {
+          background-color: lime;
+        };
+        --mauricio-marquez-paper-card: {
+          --paper-card-background-color: green;
+          --paper-card-header-color: rgb(149, 238, 32);
+        };
+        --mauricio-marquez-paper-button: {
+          background-color: rgb(215, 252, 147);
+          color: navy;
+        };
+      }
+      .double-data-binding {
+        --mauricio-marquez: {
+          background-color: magenta;
+        };
+        --mauricio-marquez-paper-card: {
+          --paper-card-background-color: rgb(27, 0, 73);
+          --paper-card-header-color: rgb(153, 219, 250);
+        };
+        --mauricio-marquez-paper-button: {
+          background-color: rgb(77, 0, 36);
+          color: white;
+        };
+      }
     </style>
     <h2>Hello [[appName]]!</h2> 
     <br><hr>
     <h2>Hardcode</h2>
     <mauricio-marquez 
+      class="hardcode"
       card-title="Hardcode"
       input-value="Hardcode"
       button-tag="Hardcode"
@@ -20,6 +59,7 @@
     <br><hr>
     <h2>One-way data binding</h2>
     <mauricio-marquez
+      class="simple-data-binding"
       card-title="[[cardTitle]]"
       input-value="[[inputValue]]"
       button-tag="[[buttonTag]]"
@@ -27,6 +67,7 @@
     <br><hr>
     <h2>Two-way data binding</h2>
     <mauricio-marquez
+      class="double-data-binding"
       card-title="[[inputValue]]"
       input-value="{{inputValue}}"
       button-tag="[[inputValue]]"
