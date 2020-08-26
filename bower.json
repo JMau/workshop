@@ -5,7 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "mauricio-marquez": "https://github.com/JMau/mauricio-marquez.git#2.0.2",
-    "login-component": "https://github.com/JMau/login-component.git#1.0.1"
+    "login-component": "https://github.com/JMau/login-component.git#1.0.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
