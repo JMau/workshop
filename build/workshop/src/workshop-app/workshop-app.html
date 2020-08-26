@@ -58,79 +58,68 @@
     <h2>Hello [[appName]]!</h2> 
     <br><hr>
     <h2>Hardcode</h2>
-    <mauricio-marquez 
-      class="hardcode"
-      card-title="Hardcode"
-      input-value="Hardcode"
-      button-tag="Hardcode"
-    ></mauricio-marquez>
+    <mauricio-marquez class="hardcode" card-title="Hardcode" input-value="Hardcode" button-tag="Hardcode"></mauricio-marquez>
     <br><hr>
     <h2>One-way data binding</h2>
-    <mauricio-marquez
-      class="simple-data-binding"
-      card-title="[[cardTitle]]"
-      input-value="[[inputValue]]"
-      button-tag="[[buttonTag]]"
-    ></mauricio-marquez>
+    <mauricio-marquez class="simple-data-binding" card-title="[[cardTitle]]" input-value="[[inputValue]]" button-tag="[[buttonTag]]"></mauricio-marquez>
     <br><hr>
     <h2>Two-way data binding</h2>
-    <mauricio-marquez
-      class="double-data-binding"
-      card-title="[[inputValue]]"
-      input-value="{{inputValue}}"
-      button-tag="[[inputValue]]"
-    ></mauricio-marquez>
+    <mauricio-marquez class="double-data-binding" card-title="[[inputValue]]" input-value="{{inputValue}}" button-tag="[[inputValue]]"></mauricio-marquez>
   </template>
 
-  <script>
-    /**
-     * @customElement
-     * @polymer
-     */
-    class WorkshopApp extends Polymer.Element {
-      static get is() { return 'workshop-app'; }
-      static get properties() {
-        return {
-          appName: {
-            type: String,
-            value: 'workshop-app'
-          },
-          email: {
-            type: String,
-            value: ''
-          },
-          password: {
-            type: String,
-            value: ''
-          },
-          isLogin: {
-            type: Boolean,
-            computed: '_validateAccess(email, password)'
-          },
-          cardTitle: {
-            type: String,
-            value: 'one-way data binding'
-          },
-          inputValue: {
-            type: String,
-            value: ''
-          },
-          buttonTag: {
-            type: String,
-            value: 'one-way data binding'
-          }
-        };
-      }
+  <script>/**
+ * @customElement
+ * @polymer
+ */
+class WorkshopApp extends Polymer.Element {
+  static get is() {
+    return 'workshop-app';
+  }
 
-      _validateAccess(email, password){
-        let access = false;
-        if(email != '' && password != ''){
-          access = true;
-        }
-        return access;
+  static get properties() {
+    return {
+      appName: {
+        type: String,
+        value: 'workshop-app'
+      },
+      email: {
+        type: String,
+        value: ''
+      },
+      password: {
+        type: String,
+        value: ''
+      },
+      isLogin: {
+        type: Boolean,
+        computed: '_validateAccess(email, password)'
+      },
+      cardTitle: {
+        type: String,
+        value: 'one-way data binding'
+      },
+      inputValue: {
+        type: String,
+        value: ''
+      },
+      buttonTag: {
+        type: String,
+        value: 'one-way data binding'
       }
+    };
+  }
+
+  _validateAccess(email, password) {
+    let access = false;
+
+    if (email != '' && password != '') {
+      access = true;
     }
 
-    window.customElements.define(WorkshopApp.is, WorkshopApp);
-  </script>
+    return access;
+  }
+
+}
+
+window.customElements.define(WorkshopApp.is, WorkshopApp);</script>
 </dom-module>
