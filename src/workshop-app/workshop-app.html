@@ -1,11 +1,16 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/mauricio-marquez/mauricio-marquez.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
 
 <dom-module id="workshop-app">
   <template>
     <style>
       :host {
         display: block;
+      }
+      mauricio-marquez {
         text-align: center;
       }
       .hardcode {
@@ -46,6 +51,17 @@
           color: white;
         };
       }
+      .pokedex {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        row-gap: 1.5rem;
+        column-gap: 1rem;
+        align-content: space-around;
+        justify-content: space-around;
+      }
+      .pokedex paper-card > *{
+        margin-left: 2rem;
+      }
     </style>
     <h2>Hello [[appName]]!</h2> 
     <br><hr>
@@ -72,6 +88,24 @@
       input-value="{{inputValue}}"
       button-tag="[[inputValue]]"
     ></mauricio-marquez>
+
+    <hr><br><br>
+    <h1>Pokedex</h1>
+    
+    <iron-ajax
+      auto
+      url= "https://pokeapi.co/api/v2/pokemon/?limit=50"
+      handle-as="json"
+      on-response="handleResponse">
+    </iron-ajax>
+    <div class="pokedex">
+      <template is="dom-repeat" items={{data}}>
+        <paper-card image="[[_pokemonImg(index)]]">
+          <h4>{{item.name}}</h4>
+          <span>[[_calculatePokemonNum(index)]]</span>
+        </paper-card>
+      </template>
+    </div>
   </template>
 
   <script>
@@ -98,8 +132,26 @@
           buttonTag: {
             type: String,
             value: 'one-way data binding'
+          },
+          data: {
+            type: Array,
+            value: []
           }
         };
+      }
+
+      _pokemonImg(index){
+        return "https://pokeres.bastionbot.org/images/pokemon/" + (index+1) + ".png";
+      }
+
+      _calculatePokemonNum(index){
+        return (index+1)
+      }
+
+      handleResponse(e){
+        console.log(e.detail.response);
+        this.data = e.detail.response.results;
+        // console.log(this.data);
       }
     }
 
